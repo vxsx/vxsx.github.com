@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     color: white;
+    text-rendering: optimizelegibility;
 }
 html {
     height: 100%;
@@ -33,17 +34,24 @@ body {
         font-size: 80px;
         letter-spacing: -1px;
     }
-    h1, h2 {
-        text-rendering: optimizelegibility;
-    }
     p {
         font-size: 32px;
         font-family: Georgia, serif;
         font-style: italic;
         font-size: 60px;
     }
+    ul {
+        list-style-type: none;
+        margin-top: 50px;
+    }
+    li {
+        display: inline-block;
+        margin-right: 100px;
+    }
     a {
-        color: white;
-        /* text-decoration: none; */
-        /* border-bottom: 1px solid white; */
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    a:hover {
+        border-bottom: 1px solid white;
     }
