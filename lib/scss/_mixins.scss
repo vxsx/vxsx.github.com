@@ -1,0 +1,36 @@
+@function to-px($var) {
+    @if unitless($var) {
+        @return $var * 1px
+    } @else {
+        @return $var
+    }
+}
+@mixin underline ($color, $offset, $weight) {
+    background-image: linear-gradient(to top, 
+        transparent, 
+        transparent to-px($offset), 
+        $color $offset, 
+        $color ($offset + $weight), 
+        transparent to-px($offset + $weight))
+}
+
+@mixin stroke-text ($color, $blur: 1px) {
+    text-shadow:
+        1px 1px to-px($blur) $color,
+        1px -1px to-px($blur) $color,
+        -1px -1px to-px($blur) $color,
+        -1px 1px to-px($blur) $color
+}
+
+@mixin min-width($width) {
+    @media all and (min-width: to-px($width)) {
+        @content
+    }
+}
+
+@mixin retina() {
+    @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+        @content
+    }
+}
+

@@ -1,16 +1,15 @@
+@import 'variables';
+@import 'mixins';
+
 * {
     margin: 0;
     padding: 0;
-    color: white;
+    color: $color;
     text-rendering: optimizelegibility;
 }
 ::selection {
     text-shadow: none;
-    background-color: #ccc;
-}
-::-moz-selection {
-    text-shadow: none;
-    background-color: #ccc;
+    background-color: $selection-color;
 }
 
 html {
@@ -20,8 +19,7 @@ body {
     height: 100%;
     text-align: center;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    line-height: 1.4;
-    background-color: black;
+    background-color: $background-color;
 }
     body::before {
         height: 100%;
@@ -56,14 +54,14 @@ body {
         margin-bottom: 5px;
     }
 
-    @media (min-width: 480px) {
+    @include min-width (480px) {
         li {
             display: inline-block;
             margin-right: 50px;
             margin-bottom: 0px;
         }
     }
-    @media (min-width: 569px) {
+    @include min-width (569px) {
         h1 {
             font-size: 120px;
             letter-spacing: -5px;
@@ -83,22 +81,23 @@ body {
 
     a {
         text-decoration: none;
-        padding: 2px 0;
-        text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
-        background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 2px, rgba(255,255,255,0.8) 2px, rgba(255,255,255,0.8) 3px, rgba(0, 0, 0, 0) 3px);
-    }
-    @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
-        a {
-            background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 2px, rgba(255,255,255,0.8) 2px, rgba(255,255,255,0.8) 2.5px, rgba(0, 0, 0, 0) 2.5px);
+        padding: 5px 0px;
+        -webkit-tap-higlight-color: $selection-color;
+
+        @if $breaking-underlines {
+            @include stroke-text($background-color, $blur: 0);
+        }
+
+        @include underline($color: $link-underline-color-active, $offset: 5px, $weight: 1px);
+        @include retina {
+            @include underline($color: $link-underline-color, $offset: 5px, $weight: 0.5px);
+        }
+
+        &:hover,
+        &:focus {
+            @include underline($color: $link-underline-color-active, $offset: 5px, $weight: 1px);
+            @include retina {
+                @include underline($color: $link-underline-color-active, $offset: 5px, $weight: 0.5px);
+            }
         }
     }
-    a:hover, a:focus {
-        background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 2px, #fff 2px, #fff 3px, rgba(0, 0, 0, 0) 3px);
-    }
-    @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
-        a:hover, a:focus {
-            background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 2px, #fff 2px, #fff 2.5px, rgba(0, 0, 0, 0) 2.5px);
-        }
-    }
-
-
