@@ -4,6 +4,15 @@
     color: white;
     text-rendering: optimizelegibility;
 }
+::selection {
+    text-shadow: none;
+    background-color: #ccc;
+}
+::-moz-selection {
+    text-shadow: none;
+    background-color: #ccc;
+}
+
 html {
     height: 100%;
 }
@@ -11,6 +20,7 @@ body {
     height: 100%;
     text-align: center;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.4;
     background-color: black;
 }
     body::before {
@@ -26,32 +36,69 @@ body {
         text-align: left;
     }
     h1 {
-        font-size: 120px;
-        letter-spacing: -5px;
-        line-height: 120px;
-    }
-    h2 {
-        font-size: 80px;
-        letter-spacing: -1px;
+        font-size: 85px;
+        letter-spacing: -2px;
+        line-height: 85px;
+        margin-bottom: 10px;
     }
     p {
-        font-size: 32px;
         font-family: Georgia, serif;
         font-style: italic;
-        font-size: 60px;
+        font-size: 30px;
+        line-height: 35px;
     }
     ul {
         list-style-type: none;
-        margin-top: 50px;
+        margin-top: 30px;
     }
     li {
-        display: inline-block;
-        margin-right: 100px;
+        display: block;
+        margin-bottom: 5px;
     }
+
+    @media (min-width: 480px) {
+        li {
+            display: inline-block;
+            margin-right: 50px;
+            margin-bottom: 0px;
+        }
+    }
+    @media (min-width: 569px) {
+        h1 {
+            font-size: 120px;
+            letter-spacing: -5px;
+            line-height: 120px;
+        }
+        p {
+            font-size: 60px;
+            line-height: 65px;
+        }
+        ul {
+            margin-top: 50px;
+        }
+        li {
+            margin-right: 100px;
+        }
+    }
+
     a {
         text-decoration: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        padding: 2px 0;
+        text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+        background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 2px, rgba(255,255,255,0.8) 2px, rgba(255,255,255,0.8) 3px, rgba(0, 0, 0, 0) 3px);
     }
-    a:hover {
-        border-bottom: 1px solid white;
+    @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+        a {
+            background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 2px, rgba(255,255,255,0.8) 2px, rgba(255,255,255,0.8) 2.5px, rgba(0, 0, 0, 0) 2.5px);
+        }
     }
+    a:hover, a:focus {
+        background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 2px, #fff 2px, #fff 3px, rgba(0, 0, 0, 0) 3px);
+    }
+    @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+        a:hover, a:focus {
+            background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 2px, #fff 2px, #fff 2.5px, rgba(0, 0, 0, 0) 2.5px);
+        }
+    }
+
+
