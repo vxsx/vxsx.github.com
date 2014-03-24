@@ -88,7 +88,7 @@ body {
             @include stroke-text($background-color, $blur: 0);
         }
 
-        @include underline($color: $link-underline-color-active, $offset: 5px, $weight: 1px);
+        @include underline($color: $link-underline-color, $offset: 5px, $weight: 1px);
         @include retina {
             @include underline($color: $link-underline-color, $offset: 5px, $weight: 0.5px);
         }
