@@ -7,6 +7,7 @@
     color: $color;
     text-rendering: optimizelegibility;
 }
+
 ::selection {
     text-shadow: none;
     background-color: $selection-color;
@@ -15,71 +16,75 @@
 html {
     height: 100%;
 }
+
 body {
     height: 100%;
-    text-align: center;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-color: $background-color;
 }
-    body::before {
+
+.page_role_vcard {
+    text-align: center;
+
+    &:before {
         height: 100%;
         vertical-align: middle;
         display: inline-block;
         content: '';
     }
-    div {
-        display: inline-block;
-        vertical-align: middle;
-        width: 80%;
-        text-align: left;
-    }
-    h1 {
+}
+
+.vcard {
+    display: inline-block;
+    vertical-align: middle;
+    width: 80%;
+    text-align: left;
+}
+    .vcard__name {
         font-size: 85px;
         letter-spacing: -2px;
         line-height: 85px;
         margin-bottom: 10px;
     }
-    p {
+    .vcard__job {
         font-family: Georgia, serif;
         font-style: italic;
         font-size: 30px;
         line-height: 35px;
     }
-    ul {
+    .vcard__links {
         list-style-type: none;
         margin-top: 30px;
     }
-    li {
+    .vcard__item {
         display: block;
         margin-bottom: 5px;
-    }
-
-    @include min-width (480px) {
-        li {
+        @include min-width (480px) {
             display: inline-block;
             margin-right: 50px;
             margin-bottom: 0px;
         }
     }
+
     @include min-width (569px) {
-        h1 {
+        .vcard__name {
             font-size: 120px;
             letter-spacing: -5px;
             line-height: 120px;
         }
-        p {
+        .vcard__job {
             font-size: 60px;
             line-height: 65px;
         }
-        ul {
+        .vcard__links {
             margin-top: 50px;
         }
-        li {
+        .vcard__item {
             margin-right: 100px;
         }
     }
 
-    a {
+    .link {
         text-decoration: none;
         padding: 5px 0px;
         -webkit-tap-higlight-color: $selection-color;

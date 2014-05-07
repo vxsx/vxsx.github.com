@@ -1,10 +1,10 @@
-$background-color: black !default;
-$color: white !default;
+$background-color: #fff !default;
+$color: #444 !default;
 $selection-color: #ccc !default;
-$link-color: white !default;
-$link-color-active: white !default;
-$link-underline-color: rgba(white, 0.8) !default;
-$link-underline-color-active: white !default;
+$link-color: $color !default;
+$link-color-active: $color !default;
+$link-underline-color: rgba($color, 0.8) !default;
+$link-underline-color-active: $color !default;
 $link-underline-width: 1px !default;
 $link-underline-offset: 2px !default;
 $breaking-underlines: true !default;
