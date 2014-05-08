@@ -6,11 +6,11 @@
     }
 }
 @mixin underline ($color, $offset, $weight) {
-    background-image: linear-gradient(to top, 
-        transparent, 
-        transparent to-px($offset), 
-        $color $offset, 
-        $color ($offset + $weight), 
+    background-image: linear-gradient(to top,
+        transparent,
+        transparent to-px($offset),
+        $color $offset,
+        $color ($offset + $weight),
         transparent to-px($offset + $weight))
 }
 
@@ -24,6 +24,12 @@
 
 @mixin min-width($width) {
     @media all and (min-width: to-px($width)) {
+        @content
+    }
+}
+
+@mixin max-width($width) {
+    @media all and (max-width: to-px($width)) {
         @content
     }
 }

@@ -1,13 +1,6 @@
 @import 'variables';
 @import 'mixins';
 
-* {
-    margin: 0;
-    padding: 0;
-    color: $color;
-    text-rendering: optimizelegibility;
-}
-
 ::selection {
     text-shadow: none;
     background-color: $selection-color;
@@ -20,7 +13,11 @@ html {
 body {
     height: 100%;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    /* line-height: 1.5; */
     background-color: $background-color;
+    color: $color;
+    text-rendering: optimizelegibility;
+    margin: 0;
 }
 
 .page_role_vcard {
@@ -44,25 +41,34 @@ body {
         font-size: 85px;
         letter-spacing: -2px;
         line-height: 85px;
-        margin-bottom: 10px;
+        margin: 0 0 10px;
     }
     .vcard__job {
         font-family: Georgia, serif;
         font-style: italic;
         font-size: 30px;
         line-height: 35px;
+        margin: 0;
     }
     .vcard__links {
         list-style-type: none;
         margin-top: 30px;
+        padding: 0;
     }
     .vcard__item {
-        display: block;
-        margin-bottom: 5px;
-        @include min-width (480px) {
-            display: inline-block;
-            margin-right: 50px;
+        display: inline-block;
+        margin-bottom: 20px;
+        width: 40%;
+    }
+
+    @include min-width (480px) {
+        .vcard__item {
             margin-bottom: 0px;
+            width: auto;
+
+            & + & {
+                margin-left: 50px;
+            }
         }
     }
 
@@ -80,13 +86,25 @@ body {
             margin-top: 50px;
         }
         .vcard__item {
-            margin-right: 100px;
+            width: auto;
+            & + & {
+                margin-left: 60px;
+            }
+        }
+    }
+
+    @include min-width (700px) {
+        .vcard__item {
+            & + & {
+                margin-left: 100px;
+            }
         }
     }
 
     .link {
         text-decoration: none;
         padding: 5px 0px;
+        color: $color;
         -webkit-tap-higlight-color: $selection-color;
 
         @if $breaking-underlines {
@@ -106,3 +124,8 @@ body {
             }
         }
     }
+
+.page_role_cv {
+    padding: 60px 10%;
+    max-width: 52em;
+}
